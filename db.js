@@ -8,4 +8,16 @@ const users = [
     username: "Vince",
   },
 ];
-module.exports = users;
+
+const posts = [
+  {
+    userId: 1,
+    post: "post by Henry",
+  },
+  {
+    userId: 2,
+    post: "post by Vince",
+  },
+];
+
+module.exports = { users, posts };

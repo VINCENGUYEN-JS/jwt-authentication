@@ -1,7 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 
-const users = require("./db");
+const { users, posts } = require("./db");
 const verifyToken = require("./middleware/auth");
 
 const app = express();
@@ -10,9 +10,10 @@ require("dotenv").config();
 app.use(express.json());
 
 app.get("/posts", verifyToken, (req, res) => {
-  console.log({ user: req.user });
+  const id = req.user.id;
+  const userPosts = posts.find((post) => post.userId === id);
   return res.json({
-    posts: "My Posts",
+    posts: userPosts,
   });
 });
 

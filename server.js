@@ -1,7 +1,6 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 
-const { users, posts } = require("./db");
+const { posts } = require("./db");
 const verifyToken = require("./middleware/auth");
 
 const app = express();
@@ -15,18 +14,6 @@ app.get("/posts", verifyToken, (req, res) => {
   return res.json({
     posts: userPosts,
   });
-});
-
-app.post("/login", (req, res) => {
-  const username = req.body.username;
-  const user = users.find((user) => user.username === username);
-  if (!user) {
-    return req.sendStatus(401);
-  }
-
-  //Create JWT
-  const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
-  res.json({ token });
 });
 
 const PORT = process.env.PORT || 4000;

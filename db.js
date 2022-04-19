@@ -1,11 +1,13 @@
-const users = [
+let users = [
   {
     id: 1,
     username: "Henry",
+    refreshToken: null,
   },
   {
     id: 2,
     username: "Vince",
+    refreshToken: null,
   },
 ];
 

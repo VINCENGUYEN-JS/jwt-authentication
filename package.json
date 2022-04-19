@@ -4,6 +4,7 @@
   "description": "JWT-authentication node app",
   "main": "server.js",
   "scripts": {
+    "auth":"nodemon authServer",
     "start": "nodemon server"
   },
   "author": "",
